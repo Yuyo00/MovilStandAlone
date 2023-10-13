@@ -1,0 +1,50 @@
+h4, p, h5 {
+    font-family: 'Merriweather Light' !important;
+}
+
+h1, h2, h3 {
+    font-family: 'Merriweather Bold' !important;
+}
+
+ion-button {
+    --background: rgb(0, 0, 0 / 0.5);
+    // --background: red;
+    border-color: white;
+    border: solid;
+    border-radius: 21px;
+    font-family: 'Lato Regular' !important;
+}
+
+div {
+    height: 262px; 
+    position: fixed;
+    bottom:0%;
+    background-color: #FFCF53;
+    width: 100%;
+    padding: 34px 36px;
+}
+
+.text-black {
+    color: #1A1A1A;
+}
+
+.bg-image{
+    --background: #fff url('/assets/img/concursos-internos.jpg') no-repeat center center / cover;
+    background-position: -607px;
+}
+
+ion-title > h1 {
+    text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.67);
+}
+
+div > h1 {
+    font-size: 32px;
+}
+
+div > p {
+    font-size: 16px;
+}
+
+b {
+    font-size: 20px;
+}

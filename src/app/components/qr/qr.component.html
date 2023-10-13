@@ -1,0 +1,38 @@
+<ion-content class="ion-padding-horizontal" >
+  <ion-title class="ion-padding-top">
+    <ion-label class="ion-text-center" >
+      <h1 #Bienvenida *ngIf="!escaneando">¡Bienvenid@!</h1>
+      <h2 #Nombre *ngIf="usuario">{{ usuario.nombre  }} {{ usuario.apellido }}</h2>
+      <p>Escanea el código QR para registrar tu asistencia a clases</p>
+    </ion-label>
+  </ion-title>
+  <ion-grid class="ion-text-center">
+    
+    <a *ngIf="!escaneando" (click)="comenzarEscaneoQR()" class="qr">
+      <img src="assets/img/QR_code_for_mobile_English_Wikipedia.svg.png" style="height: 450px;">
+    </a>
+    <p (click)="comenzarEscaneoQR()" *ngIf="!escaneando" style="position:relative; top: -235px;"> Presione para activar la camara </p>
+    <video #video [hidden]="!escaneando" height="450px" ></video>
+    <canvas #canvas hidden></canvas>
+    <ion-row>
+    <ion-col size="12">
+    <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()"  shape="round" class="ion-text-center" >
+      <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+      Detener escaneo
+    </ion-button>
+    <ion-button *ngIf="datos" (click)="miClase()"  shape="round" class="ion-text-center" >
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      Ver informacion de la clase
+    </ion-button>
+    <p *ngIf="!datos && !escaneando">
+      <ion-text color="medium">Escanee código QR para acceder a Mi Clase</ion-text>
+    </p>
+    </ion-col>
+    </ion-row>
+  
+    <ion-button (click)="logOff()"  shape="round" class="ion-text-center" id="cerrarSesion">
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+  </ion-grid>
+</ion-content>

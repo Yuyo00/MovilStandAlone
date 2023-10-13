@@ -1,0 +1,67 @@
+
+ion-header {
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    --padding-end: 20px;
+    --padding-start: 20px;
+  }
+  
+  h4, h5 {
+    font-family: 'Merriweather Light' !important;
+    color: white;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Merriweather Bold' !important;
+    color: white;
+  }
+
+  p {
+    font-family: 'Lato Regular' !important;
+    color: white;
+  }
+
+ion-text {
+  color: #2C2C2C !important;
+}
+
+.listaClase{
+  justify-content: center;
+	display: flex!important;
+  align-items: center!important;
+}
+
+.bg-image{
+  --background: #fff url('/assets/img/smilingGuy.png') no-repeat center center / cover;
+}
+
+ion-col{
+  margin-left: -0.5rem;
+}
+
+h3 {
+  margin-top: -0.5rem;
+  margin-bottom: 0.3rem;
+  color: #2C2C2C !important;
+}
+
+#dia {
+  color:gray !important;
+}
+
+ion-card {
+  background-color: white;
+}
+
+ion-button {
+  --background: rgb(0, 0, 0, 0.5);
+  // --background: red;
+  border-color: white;
+  border: solid;
+  border-radius: 21px;
+  font-family: 'Lato Regular' !important;
+}
+
+.text-black {
+  color: #2C2C2C;
+}

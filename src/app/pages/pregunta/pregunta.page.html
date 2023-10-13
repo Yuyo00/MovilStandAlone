@@ -1,0 +1,43 @@
+<ion-content fullscreen = true>
+
+  <ion-title class="ion-padding-top ion-text-center">
+    <img src="assets/img/logo_duoc.png" style="height: 80px;">
+    <h1>Sistema de Asistencia DuocUC</h1>
+  </ion-title>
+  
+  <div class="ion-padding-vertical">
+    
+    <ion-card class="ion-text-center ion-padding-vertical">
+
+      <ion-card-title class="ion-text-center">
+        <ion-label>
+          <h2>Recuperar contraseña</h2>
+          <h3>Paso 2: Responde la pregunta secreta</h3>
+
+          <h4 *ngIf="usuario">{{ usuario.nombre }} {{ usuario.apellido }}<br>{{ usuario.preguntaSecreta }}</h4>
+        </ion-label>
+      </ion-card-title>
+
+      <form>
+        <ion-card-content>
+          
+          <ion-item>
+            <ion-input name="respuesta" label="Ingresa tu respuesta" labelPlacement="floating" type="text" [(ngModel)]="respuestaUsuario"></ion-input>
+          </ion-item>
+
+          <ion-button (click)="Responder()" shape="round">
+            Recuperar Contraseña
+            <ion-icon  name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+
+        </ion-card-content>
+      </form>
+      
+      <ion-label>
+        <a routerLink="/login">Iniciar Sesión</a>
+      </ion-label>
+    </ion-card> 
+
+  </div>
+  
+</ion-content>

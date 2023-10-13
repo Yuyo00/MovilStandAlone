@@ -1,0 +1,65 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ion-header {
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --padding-end: 20px;
+  --padding-start: 20px;
+}
+
+h4, p, h5 {
+  font-family: 'Merriweather Light' !important;
+}
+
+h1, h2, h3 {
+  font-family: 'Merriweather Bold' !important;
+}
+
+.qr {
+  filter: blur(4px);
+}
+
+ion-button {
+  --background: #FFB800;
+  font-family: 'Lato Regular' !important;
+}
+
+a {
+  font-family: 'Lato BoldItalic' !important;
+  color: white;
+}
+
+#cerrarSesion {
+  --background: rgb(0, 0, 0, 0.5) !important; 
+  // --background: red;
+  border-color: white !important;
+  border: solid !important;
+  border-radius: 21px !important;
+  font-family: 'Lato Regular' !important;
+}

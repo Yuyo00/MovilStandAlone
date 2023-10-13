@@ -1,0 +1,43 @@
+ion-content{
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    --padding-end: 20px;
+    --padding-start: 20px;
+  }
+  
+  $color-orange: #FFB800;
+  
+  ion-button {
+      --background: #FFB800;
+      font-family: 'Lato Regular' !important;
+  }
+  
+  ::ng-deep ion-input .label-text{
+    color: #FFFFFF;
+  }
+  
+  ion-content, h5 {
+    font-family: 'Merriweather', 'Merriweather Bold', 'Merriweather Black', 'Merriweather Italic', 'Merriweather BoldItalic' !important;
+    
+  }
+  
+  h4, p {
+    font-family: 'Merriweather Light' !important;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Merriweather Bold' !important;
+  }
+  
+  a {
+    font-family: 'Lato BoldItalic' !important;
+    color: white;
+  }
+  
+  .bg-image{
+    --background: #fff url('/assets/img/2persons.webp') no-repeat center center / cover;
+  }
+  .login {
+    background-color: rgba(26, 25, 25, 0.8)!important;
+  }
+  

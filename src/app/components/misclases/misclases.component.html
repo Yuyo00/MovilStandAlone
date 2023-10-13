@@ -1,0 +1,122 @@
+<ion-content class="ion-text-center bg-image">
+
+  <ion-title>
+    <img src="assets/img/logo_duoc.png" style="height: 80px;">
+
+    <h1>Sistema de Asistencia DuocUC</h1>
+  </ion-title>
+
+  <h1> Datos de la asignatura</h1>
+
+  <!-- HOLA PROFE, SI DESEA VER ESTA INFORMACIÓN COMO UNA TABLA DESCOMENTE ESTE CÓDIGO.
+        QUISIMOS HACERLO ASÍ YA QUE SE VE MAS ATRACTIVO Y ES COM EL VIVODUOC, POR LO CUAL SEGUIMOS
+        EL DISEÑO DE EMPRESA, GRACIAS. -->
+        
+  <!-- <ion-list [inset]="true">
+    <ion-item>
+      <p>
+        <b>Sede:</b> {{asistencia.sede}}
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <b>Sigla:</b> {{asistencia.idAsignatura}}
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <b>Sección:</b> {{asistencia.seccion}}
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <b>Asignatura:</b> {{asistencia.nombreAsignatura}}
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <b>Profesor:</b> {{asistencia.nombreProfesor}}
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <b>Día:</b> {{asistencia.dia}}
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <b>Bloque de inicio:</b> {{asistencia.bloqueInicio}}
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <b>Bloque de termino:</b> {{asistencia.bloqueTermino}}
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <b>Hora de inicio:</b> {{asistencia.horaInicio}}
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <b>Hora de término:</b> {{asistencia.horaFin}}
+      </p>
+    </ion-item>
+  </ion-list> -->
+  
+  <ion-card *ngIf="asistencia.bloqueInicio != 0">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row> 
+          <ion-col size="1">
+            <img src="assets/img/blue.png"style="height: 130px;">
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-start">
+              <ion-text>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="9"><b>{{asistencia.horaInicio}} - {{asistencia.horaFin}}</b></ion-col>
+                    <ion-col id="dia" class="ion-text-end">{{asistencia.dia}}</ion-col>
+                  </ion-row>
+                </ion-grid>
+
+                <h3>{{asistencia.idAsignatura}}_{{asistencia.seccion}} - {{asistencia.nombreAsignatura}}</h3>
+                Bloques: {{asistencia.bloqueInicio}} a {{asistencia.bloqueTermino}} <br>
+                Profesor: {{asistencia.nombreProfesor}} <br>
+                Sede {{asistencia.sede}}
+              </ion-text>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card> 
+
+  <ion-card *ngIf="asistencia.bloqueInicio == 0">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="1">
+            <img src="assets/img/blue.png"style="height: 60px;">
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-start ion-padding-vertical">
+              <ion-text>
+                <h3>No se ha escaneado una clase</h3>
+                <p class="text-black">Escanee un codigo QR para continuar</p>
+              </ion-text>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card> 
+
+  <ion-button (click)="logOff()"  shape="round" class="ion-text-center" >
+    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    Cerrar Sesión
+  </ion-button>
+
+</ion-content>

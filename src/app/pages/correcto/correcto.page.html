@@ -1,0 +1,30 @@
+<ion-content class="bg-image">
+
+  <ion-title class="ion-text-center">
+      
+        <img src="assets/img/logo_duoc.png" style="height: 80px; margin-top: 58px !important;">
+    
+        <h1>Sistema de Asistencia DuocUC</h1>
+
+    </ion-title>
+
+    <div>
+      <h1 class="text-black">Recuperar contraseña</h1>
+      <p class="text-black">
+        Verificación completada, su contraseña es: <b>{{this.usuario.password}}</b>
+      </p>
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col class="ion-text-center">
+            <ion-button (click)="iniciarSesion()"  shape="round" class="text-black" >
+              <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+              Iniciar Sesión
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    
+
+</ion-content>

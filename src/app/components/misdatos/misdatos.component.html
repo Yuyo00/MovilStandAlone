@@ -1,0 +1,43 @@
+<ion-content>
+  <ion-title class="ion-padding-top">
+    <ion-label class="ion-text-center" >
+      <h1 #Bienvenida >¡Bienvenid@!</h1>
+      <h2 #Nombre >{{ usuario.nombre  }} {{ usuario.apellido }}</h2>
+    </ion-label>
+  </ion-title>
+
+  <h2>Mis datos</h2>
+
+  <ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-input label="Nombre" placeholder="Ingrese Nombre" value="{{usuario.nombre}}"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input label="Apellido" placeholder="Ingrese Apellido" value="{{usuario.apellido}}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Correo" type="email" placeholder="Ingrese Correo Institucional" value="{{usuario.correo}}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Pregunta Secreta" placeholder="Ingrese pregunta secreta" value="{{usuario.preguntaSecreta}}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Respuesta Secreta" placeholder="Ingrese respuesta secreta" value="{{usuario.respuestaSecreta}}"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input label="Contraseña" type="password" value="{{usuario.password}}" placeholder="Ingrese contraseña"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Repetir Contraseña" type="password" value="{{usuario.password}}" placeholder="Vuelva a repetir la contraseña"></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </ion-list>
+</ion-content>
