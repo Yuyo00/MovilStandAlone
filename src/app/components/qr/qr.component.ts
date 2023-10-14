@@ -170,7 +170,7 @@ export class QrComponent  implements OnInit, AfterViewInit {
   
   public logOff(): void{
     this.authService.logout();
-    this.router.navigate(['/login'])
+    
   }
 
   
