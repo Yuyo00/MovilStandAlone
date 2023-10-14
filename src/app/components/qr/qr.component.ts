@@ -6,6 +6,7 @@ import { AlertController, AnimationController, IonicModule, ToastController } fr
 import { Asistencia } from 'src/app/model/asistencia';
 import { Usuario } from 'src/app/model/usuario';
 import jsQR, { QRCode } from 'jsqr';
+import { AuthService } from 'src/app/services/auth.service.service';
 
 @Component({
   selector: 'app-qr',
@@ -34,7 +35,7 @@ export class QrComponent  implements OnInit, AfterViewInit {
   public usuario: Usuario;
   public datos = false;
 
-  constructor(private activeroute: ActivatedRoute , private router: Router , private alertController: AlertController , private animationController: AnimationController, private toastController: ToastController) { this.usuario = new Usuario();
+  constructor(private activeroute: ActivatedRoute , private router: Router , private authService : AuthService, private animationController: AnimationController, private toastController: ToastController) { this.usuario = new Usuario();
 
 
   this.activeroute.queryParams.subscribe(params => { 
@@ -168,6 +169,7 @@ export class QrComponent  implements OnInit, AfterViewInit {
   }
   
   public logOff(): void{
+    this.authService.logout();
     this.router.navigate(['/login'])
   }
 

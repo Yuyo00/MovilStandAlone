@@ -29,6 +29,7 @@ ion-text {
   justify-content: center;
 	display: flex!important;
   align-items: center!important;
+  padding-top: 1rem;
 }
 
 .bg-image{
@@ -45,14 +46,6 @@ h3 {
   color: #2C2C2C !important;
 }
 
-#dia {
-  color:gray !important;
-}
-
-ion-card {
-  background-color: white;
-}
-
 ion-button {
   --background: rgb(0, 0, 0, 0.5);
   // --background: red;
@@ -64,4 +57,8 @@ ion-button {
 
 .text-black {
   color: #2C2C2C;
+}
+
+h2 {
+  padding-left: 1rem;
 }

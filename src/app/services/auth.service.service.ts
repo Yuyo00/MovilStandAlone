@@ -56,9 +56,9 @@ export class AuthService {
         this.bd.actualizarSesionActiva(usuario.correo, 'N');
         this.storage.remove(this.keyUsuario);
         this.usuarioAutenticado.next(null);
-        this.router.navigate(['ingreso']);
+        this.router.navigate(['login']);
       } else {
-        this.router.navigate(['ingreso']);
+        this.router.navigate(['login']);
       }
     })
 
