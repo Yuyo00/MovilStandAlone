@@ -16,6 +16,7 @@ import { AuthService } from './app/services/auth.service.service';
 import { Storage } from '@ionic/storage-angular';
 import { Capacitor } from '@capacitor/core';
 import { defineCustomElements as jeepSqlite} from 'jeep-sqlite/loader';
+import { HttpClientModule } from '@angular/common/http';
 
 
 if (environment.production) {
@@ -39,7 +40,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     importProvidersFrom(IonicModule.forRoot({ innerHTMLTemplatesEnabled : true }), 
-    // HttpClientModule, 
+    HttpClientModule, 
     // IonicStorageModule.forRoot()
     ),
 

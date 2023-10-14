@@ -80,7 +80,8 @@ export class LoginPage implements OnInit {
         await this.storage.guardarUsuarioAutenticadoConPrivacidad(this.usuarioRescatado);
   
         this.mostrarMensaje(`Bienvenid@ ${this.usuario.nombre} ${this.usuario.apellido}!`)
-        this.router.navigate(['/home/misdatos']);
+        this.router.navigate(['/home/qr']);
+        this.authService.login(this.usuario.correo, this.usuario.password)
       } else {
         this.mostrarMensaje(`???`)
       }
