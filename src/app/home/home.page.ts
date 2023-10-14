@@ -11,6 +11,7 @@ import { ToastController } from '@ionic/angular';
 import { AfterViewInit, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router , NavigationExtras} from '@angular/router';
 import jsQR, { QRCode } from 'jsqr';
+import { MessageEnum } from '../model/message-enum';
 
 @Component({
   selector: 'app-home',
@@ -39,9 +40,16 @@ export class HomePage implements OnInit, AfterViewInit {
   public usuario: Usuario;
   public datos = false;
 
-  constructor(private activeroute: ActivatedRoute , private router: Router , private alertController: AlertController , private animationController: AnimationController, private toastController: ToastController) {
+  listaUsuarios: Usuario[] = [];
+  nombre = '';
 
-    this.usuario = new Usuario('','','','','','');
+  constructor(private bd: DataBaseService, private activeroute: ActivatedRoute , private router: Router , private alertController: AlertController , private animationController: AnimationController, private toastController: ToastController) {
+
+    this.bd.listaUsuarios.subscribe(usuarios => {
+      this.listaUsuarios = usuarios;
+    })
+
+    this.usuario = new Usuario();
 
 
     this.activeroute.queryParams.subscribe(params => { 
@@ -55,7 +63,7 @@ export class HomePage implements OnInit, AfterViewInit {
         }
       }
       
-      this.router.navigate(['/login']);
+      // this.router.navigate(['/login']);
     });
     }
     
@@ -206,5 +214,17 @@ export class HomePage implements OnInit, AfterViewInit {
         this.router.navigate(['home/'+ event.detail.value], navigationExtras);
       }
     
-      
+      getUserId(index: any, item: any) {
+        return item.correo;
+      }
+    
+      generarNumeroAleatorio(min: number, max: number): number {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+    
+      crearUsuariosDePrueba() {
+        const u: Usuario = new Usuario();
+        u.setUsuario(this.generarNumeroAleatorio(1, 999999) + 'a@duocuc.cl', '1234', this.nombre, '', 'Animal favorito', 'gato', 'N', false);
+        this.bd.crearUsuario(u)
+      }
     }

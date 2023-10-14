@@ -21,7 +21,7 @@ export class PreguntaPage implements OnInit, AfterViewInit {
   public respuestaUsuario: string = '';
 
   constructor(private activeroute: ActivatedRoute , private router: Router, private toastController: ToastController) { 
-    this.usuario = new Usuario('', '', '', '', '', '');
+    this.usuario = new Usuario();
         
     this.activeroute.queryParams.subscribe(params => { 
 

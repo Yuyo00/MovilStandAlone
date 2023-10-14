@@ -31,8 +31,31 @@ export class DataBaseService {
   private nombreBaseDatos = 'basedatos';
   private db!: SQLiteDBConnection;
   private estaListoUsuario: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  // usuario1: Usuario;
+  // usuario2: Usuario;
+  // usuario3: Usuario;
 
-  constructor(private sqliteService: SQLiteService, private dbVerService: DbnameVersionService) { }
+  constructor(private sqliteService: SQLiteService, private dbVerService: DbnameVersionService) {
+    // this.usuario1 = new Usuario();
+    // this.usuario1.setUsuario('atorres@duocuc.cl','1234','Ana','Torres','¿Cuál es tu animal favorito?','gato','no',false);
+    // this.usuario2 = new Usuario();
+    // this.usuario2.setUsuario('jperez@duocuc.cl','5678','Juan','Pérez','¿Cuál es tu postre favorito?','panqueques','no',false);
+    // this.usuario3 = new Usuario();
+    // this.usuario3.setUsuario('cmujica@duocuc.cl','0987','Carla','Mujica','¿Cuál es tu vehículo favorito?','moto','no',false);
+
+  }
+
+  async actualizarSesionActiva(correo: string, sesionActiva: string) {
+    const sql = 'UPDATE USUARIO SET sesionActiva=? WHERE correo=?';
+    await this.db.run(sql, [sesionActiva, correo]);
+    await this.leerUsuarios();
+  }
+
+  async validarUsuario(correo: string, password: string): Promise<Usuario | undefined> {
+    const usuarios: Usuario[]= (await this.db.query('SELECT * FROM USUARIO WHERE correo=? AND password=?;',
+      [correo, password])).values as Usuario[];
+    return usuarios[0];
+  }
 
   async inicializarBaseDeDatos() {
     
@@ -54,6 +77,11 @@ export class DataBaseService {
     } catch(err: any) {
       showAlertError('inicializarBaseDeDatos', err);
     };
+
+    // Crear usuarios de prueba
+    // this.crearUsuario(this.usuario1);
+    // this.crearUsuario(this.usuario2);
+    // this.crearUsuario(this.usuario3);
 
     // Respaldar el nombre y versión de la base de datos
     this.dbVerService.set(this.nombreBaseDatos, 1);
@@ -114,6 +142,8 @@ export class DataBaseService {
     await this.db.run(sql);
     await this.leerUsuarios();
   }
+
+
 }
 function err(reason: any): SQLiteDBConnection | PromiseLike<SQLiteDBConnection> {
   throw new Error('Function not implemented.');

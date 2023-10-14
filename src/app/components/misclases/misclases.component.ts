@@ -22,7 +22,7 @@ export class MisclasesComponent  implements OnInit {
 
 
   constructor(private activeroute: ActivatedRoute, private router: Router, private alertController: AlertController, private animationController: AnimationController) { 
-    this.usuario = new Usuario('', '', '', '', '', '');
+    this.usuario = new Usuario();
     
     this.activeroute.queryParams.subscribe(params => { 
       const nav = this.router.getCurrentNavigation();

@@ -3,6 +3,9 @@ import { MisdatosComponent } from './components/misdatos/misdatos.component';
 import { ForoComponent } from './components/foro/foro.component';
 import { MisclasesComponent } from './components/misclases/misclases.component';
 import { QrComponent } from './components/qr/qr.component';
+import { loginGuard } from './guards/login-guard.service';
+import { authGuard } from './guards/auth-guard.service';
+
 
 export const routes: Routes = [
   {
@@ -34,11 +37,13 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./pages/login/login.page').then( m => m.LoginPage)
+    loadComponent: () => import('./pages/login/login.page').then( m => m.LoginPage),
+    canActivate: [loginGuard]
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.page').then( m => m.HomePage)
+    loadChildren: () => import('./home/home.page').then( m => m.HomePage),
+    canActivate: [authGuard]
   },
   {
     path: 'pregunta',
