@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, AnimationController, IonicModule, ToastController } from '@ionic/angular';
 import { Asistencia } from 'src/app/model/asistencia';
 import { Usuario } from 'src/app/model/usuario';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-misdatos',
@@ -19,7 +20,7 @@ export class MisdatosComponent  implements OnInit, AfterViewInit{
   @ViewChild('Bienvenida', { read: ElementRef }) itemBienvenida!: ElementRef;
   @ViewChild('Nombre', { read: ElementRef }) itemNombreTit!: ElementRef;
 
-  constructor(private activeroute: ActivatedRoute , private router: Router , private alertController: AlertController , private animationController: AnimationController, private toastController: ToastController) {
+  constructor( private storage : StorageService, private activeroute: ActivatedRoute , private router: Router , private alertController: AlertController , private animationController: AnimationController, private toastController: ToastController) {
     this.usuario = new Usuario();
     
     this.activeroute.queryParams.subscribe(params => { 
@@ -61,7 +62,18 @@ export class MisdatosComponent  implements OnInit, AfterViewInit{
         animation.play();
       }
   }
+  
+  async DatosStorage() {
+    const Datos = await this.storage.leerUsuarioAutenticadoSinPrivacidad()
+    if (Datos) {
+      this.usuario.setUsuario(Datos.correo, Datos.password, Datos.nombre, Datos.apellido, Datos.preguntaSecreta, Datos.respuestaSecreta, Datos.sesionActiva)
+    } else {
+      console.log('Error :(')
+    }
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.DatosStorage();
+  }
 
 }

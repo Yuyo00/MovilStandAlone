@@ -7,6 +7,7 @@ import { Asistencia } from 'src/app/model/asistencia';
 import { Usuario } from 'src/app/model/usuario';
 import jsQR, { QRCode } from 'jsqr';
 import { AuthService } from 'src/app/services/auth.service.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-qr',
@@ -35,8 +36,8 @@ export class QrComponent  implements OnInit, AfterViewInit {
   public usuario: Usuario;
   public datos = false;
 
-  constructor(private activeroute: ActivatedRoute , private router: Router , private authService : AuthService, private animationController: AnimationController, private toastController: ToastController) { this.usuario = new Usuario();
-
+  constructor(private activeroute: ActivatedRoute , private storage : StorageService, private router: Router , private authService : AuthService, private animationController: AnimationController, private toastController: ToastController) { 
+  this.usuario = new Usuario();
 
   this.activeroute.queryParams.subscribe(params => { 
   
@@ -90,7 +91,17 @@ export class QrComponent  implements OnInit, AfterViewInit {
     }
   }
 
+  async DatosStorage() {
+    const Datos = await this.storage.leerUsuarioAutenticadoSinPrivacidad()
+    if (Datos) {
+      this.usuario.setUsuario(Datos.correo, Datos.password, Datos.nombre, Datos.apellido, Datos.preguntaSecreta, Datos.respuestaSecreta, Datos.sesionActiva)
+    } else {
+      console.log('Error :(')
+    }
+  }
+
   public ngOnInit(): void {
+    this.DatosStorage();
   }
 
   public async comenzarEscaneoQR() {
@@ -170,11 +181,7 @@ export class QrComponent  implements OnInit, AfterViewInit {
   
   public logOff(): void{
     this.authService.logout();
-    
   }
-
-  
-
 
   public animateItem(elementRef: any) {
     this.animationController
@@ -200,7 +207,5 @@ export class QrComponent  implements OnInit, AfterViewInit {
       this.mostrarMensaje(`No se encontro una clase`);
     }
   }
-
-  
 }
 

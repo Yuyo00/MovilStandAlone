@@ -31,17 +31,17 @@ export class DataBaseService {
   private nombreBaseDatos = 'basedatos';
   private db!: SQLiteDBConnection;
   private estaListoUsuario: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  // usuario1: Usuario;
-  // usuario2: Usuario;
-  // usuario3: Usuario;
+  usuario1: Usuario;
+  usuario2: Usuario;
+  usuario3: Usuario;
 
   constructor(private sqliteService: SQLiteService, private dbVerService: DbnameVersionService) {
-    // this.usuario1 = new Usuario();
-    // this.usuario1.setUsuario('atorres@duocuc.cl','1234','Ana','Torres','¿Cuál es tu animal favorito?','gato','no',false);
-    // this.usuario2 = new Usuario();
-    // this.usuario2.setUsuario('jperez@duocuc.cl','5678','Juan','Pérez','¿Cuál es tu postre favorito?','panqueques','no',false);
-    // this.usuario3 = new Usuario();
-    // this.usuario3.setUsuario('cmujica@duocuc.cl','0987','Carla','Mujica','¿Cuál es tu vehículo favorito?','moto','no',false);
+    this.usuario1 = new Usuario();
+    this.usuario1.setUsuario('atorres@duocuc.cl','1234','Ana','Torres','¿Cuál es tu animal favorito?','gato','no');
+    this.usuario2 = new Usuario();
+    this.usuario2.setUsuario('jperez@duocuc.cl','5678','Juan','Pérez','¿Cuál es tu postre favorito?','panqueques','no');
+    this.usuario3 = new Usuario();
+    this.usuario3.setUsuario('cmujica@duocuc.cl','0987','Carla','Mujica','¿Cuál es tu vehículo favorito?','moto','no');
 
   }
 
@@ -79,9 +79,9 @@ export class DataBaseService {
     };
 
     // Crear usuarios de prueba
-    // this.crearUsuario(this.usuario1);
-    // this.crearUsuario(this.usuario2);
-    // this.crearUsuario(this.usuario3);
+    this.crearUsuario(this.usuario1);
+    this.crearUsuario(this.usuario2);
+    this.crearUsuario(this.usuario3);
 
     // Respaldar el nombre y versión de la base de datos
     this.dbVerService.set(this.nombreBaseDatos, 1);
@@ -105,7 +105,9 @@ export class DataBaseService {
 
   async leerUsuario(correo: string) {
     const users: Usuario[]= (await this.db.query(`SELECT * FROM USUARIO WHERE correo='${correo}';`)).values as Usuario[];
+    console.log(users)
     return users[0];
+    
   }
 
   async leerUsuarios() {

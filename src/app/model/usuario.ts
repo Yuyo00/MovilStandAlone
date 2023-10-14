@@ -25,22 +25,22 @@ export class Usuario {
         preguntaSecreta: string,
         respuestaSecreta: string,
         sesionActiva: string,
-        hideSecrets: boolean)
-    {
+        // hideSecrets: boolean)
+    ){
         this.correo = correo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.sesionActiva = sesionActiva;
-        if (hideSecrets) {
-          this.password = '';
-          this.preguntaSecreta = '';
-          this.respuestaSecreta = '';
+        // if (hideSecrets) {
+        //   this.password = '';
+        //   this.preguntaSecreta = '';
+        //   this.respuestaSecreta = '';
         
-        } else {
+        // } else {
           this.password = password;
           this.preguntaSecreta = preguntaSecreta;
           this.respuestaSecreta = respuestaSecreta;
-        }
+        // }
     }
 
     validarCorreo(correo: string): string {
@@ -97,6 +97,9 @@ export class Usuario {
         }
         //const usu = await db.leerUsuario(correo, password, true);
         const usu = await storageService.leerUsuario(correo);
+        console.log(correo)
+        console.log(usu)
+        console.log(usu.correo)
         if (usu === null) {
           await showAlertDUOC('El correo o la contraseña no son correctos');
           return resolve(false);

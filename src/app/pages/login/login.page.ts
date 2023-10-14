@@ -21,6 +21,8 @@ export class LoginPage implements OnInit {
   public usuarioRescatado : Usuario;
   public usuario: Usuario;
   listaUsuarios: Usuario[] = [];
+  public passwordEscrita = '';
+  public correoEscrito = '';
 
   constructor(private storage : StorageService, private router: Router, private toastController: ToastController, private bd: DataBaseService, private authService: AuthService) { 
     this.usuario = new Usuario()
@@ -46,47 +48,34 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-  // public ingresar(): void {
-    
-  //   if (this.usuario) {
-      
-  //     const mensajeError = this.usuario.validarUsuario();
-  //     if (mensajeError) {
-  //       this.mostrarMensaje(mensajeError);
-  //       return;
-  //     }
-  //     const usu: Usuario | undefined = this.usuario.buscarUsuarioValido(this.usuario.correo, this.usuario.password);
-      
-  //     if (usu) {
-  
-  //       const navigationExtras: NavigationExtras = {
-  //         state: {
-  //           usuario: usu
-  //         }
-  //       };
-  //       this.mostrarMensaje(`Bienvenid@ ${usu.nombre} ${usu.apellido}!`);
-  //       this.router.navigate(['/home/qr'], navigationExtras); 
-  //     }
-  //   }
-  // }
 
   async ingresar() {
-    const validar: boolean = await this.usuario.validarUsuario(this.bd, this.usuario.correo, this.usuario.password);
+    const validar: boolean = await this.usuario.validarUsuario(this.bd, this.correoEscrito, this.passwordEscrita);
 
     if (validar) {
       const result = this.listaUsuarios.find((item) => item.correo === this.usuario.correo);
+
+      console.log(result)
+
       if (result) {
-        this.usuarioRescatado.setUsuario(result?.correo, result?.password, result?.nombre, result?.apellido, result?.preguntaSecreta, result?.respuestaSecreta, result?.sesionActiva, false);
-        await this.storage.guardarUsuarioAutenticadoConPrivacidad(this.usuarioRescatado);
-  
-        this.mostrarMensaje(`Bienvenid@ ${this.usuario.nombre} ${this.usuario.apellido}!`)
-        this.router.navigate(['/home/qr']);
-        this.authService.login(this.usuario.correo, this.usuario.password)
+        if (this.correoEscrito == result.correo && this.passwordEscrita == result.password) {
+          
+          this.usuarioRescatado.setUsuario(result?.correo, result?.password, result?.nombre, result?.apellido, result?.preguntaSecreta, result?.respuestaSecreta, result?.sesionActiva);
+          
+          await this.storage.guardarUsuarioAutenticadoConPrivacidad(this.usuario);
+          
+          this.authService.login(this.usuario.correo, this.usuario.password)
+          this.mostrarMensaje(`Bienvenid@ ${this.usuario.nombre} ${this.usuario.apellido}!`)
+          this.router.navigate(['/home/qr']);
+        } else {
+
+          this.mostrarMensaje(`Usuario o contraseña incorrectos.`)
+        }
       } else {
         this.mostrarMensaje(`???`)
       }
     } else {
-      this.mostrarMensaje(`Usuario o contraseña incorrectos.`)
+      this.mostrarMensaje(`Usuario o contraseña incorrectos?`)
     }
   }
 

@@ -32,8 +32,7 @@ private async leerUsuarioAutenticado(hideSecrets: boolean): Promise<Usuario | nu
                     json.apellido, 
                     json.preguntaSecreta, 
                     json.respuestaSecreta, 
-                    json.sesionActiva,
-                    hideSecrets
+                    json.sesionActiva
                 );
                 return Promise.resolve(usu);
             } else {
