@@ -10,7 +10,7 @@ import { InitializeAppService } from './app/services/initialize.app.service';
 import { SQLiteService } from './app/services/sqlite.service';
 import { DataBaseService } from './app/services/data-base.service';
 import { StorageService } from './app/services/storage.service';
-import { DbnameVersionService } from './app/services/dbname-version.service';
+import { DbnameVersionService } from 'src/app/services/dbname-version.service';
 import { APP_INITIALIZER } from '@angular/core';
 import { AuthService } from './app/services/auth.service.service';
 import { Storage } from '@ionic/storage-angular';
