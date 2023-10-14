@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, AnimationController, IonicModule } from '@ionic/angular';
 import { Asistencia } from 'src/app/model/asistencia';
 import { Usuario } from 'src/app/model/usuario';
+import { AuthService } from 'src/app/services/auth.service.service';
 
 @Component({
   selector: 'app-misclases',
@@ -21,7 +22,7 @@ export class MisclasesComponent  implements OnInit {
   public datos: any;
 
 
-  constructor(private activeroute: ActivatedRoute, private router: Router, private alertController: AlertController, private animationController: AnimationController) { 
+  constructor(private authService : AuthService, private activeroute: ActivatedRoute, private router: Router, private alertController: AlertController, private animationController: AnimationController) { 
     this.usuario = new Usuario();
     
     this.activeroute.queryParams.subscribe(params => { 
@@ -43,6 +44,7 @@ export class MisclasesComponent  implements OnInit {
   ngOnInit() {}
 
   public logOff(): void{
+    this.authService.logout();
     this.router.navigate(['/login'])
   }
   public mostrarDatosQROrdenados(datosQR: string): void {
