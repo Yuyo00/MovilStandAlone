@@ -18,13 +18,12 @@
 
       <form>
         <ion-card-content>
-          
           <ion-item>
-            <ion-input name="correo" label="Ingresa tu Correo" labelPlacement="floating" type="text" [(ngModel)]="correo"></ion-input>
+            <ion-input name="correo" label="Ingresa tu Correo" labelPlacement="floating" type="text" [(ngModel)]="usuario.correo"></ion-input>
           </ion-item>
 
           <br>
-          <ion-button (click)="IrPregunta()" shape="round">
+          <ion-button (click)="SiguientePaso()" shape="round">
             Recuperar Contraseña
             <ion-icon  name="chevron-forward-outline"></ion-icon>
           </ion-button>

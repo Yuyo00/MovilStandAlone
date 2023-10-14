@@ -31,7 +31,7 @@ export class AuthService {
         this.bd.actualizarSesionActiva(correo, 'S');
         this.storage.set(this.keyUsuario, usuarioAutenticado);
         this.usuarioAutenticado.next(usuarioAutenticado);
-        this.router.navigate(['inicio']);
+        this.router.navigate(['home/qr']);
       } else {
         await this.bd.validarUsuario(correo, password).then(async (usuario: Usuario | undefined) => {
           if (usuario) {
@@ -39,7 +39,7 @@ export class AuthService {
             this.bd.actualizarSesionActiva(correo, 'S');
             this.storage.set(this.keyUsuario, usuario);
             this.usuarioAutenticado.next(usuario);
-            this.router.navigate(['inicio']);
+            this.router.navigate(['home/qr']);
           } else {
             showToast(`El correo o la password son incorrectos`);
             this.router.navigate(['ingreso']);

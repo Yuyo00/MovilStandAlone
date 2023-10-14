@@ -224,7 +224,7 @@ export class HomePage implements OnInit, AfterViewInit {
     
       crearUsuariosDePrueba() {
         const u: Usuario = new Usuario();
-        u.setUsuario(this.generarNumeroAleatorio(1, 999999) + 'a@duocuc.cl', '1234', this.nombre, '', 'Animal favorito', 'gato', 'N', false);
+        u.setUsuario(this.generarNumeroAleatorio(1, 999999) + 'a@duocuc.cl', '1234', this.nombre, '', 'Animal favorito', 'gato', 'N');
         this.bd.crearUsuario(u)
       }
     }
