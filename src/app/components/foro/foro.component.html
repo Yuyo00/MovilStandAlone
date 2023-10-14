@@ -1,8 +1,8 @@
 <ion-header [translucent]="true">
 
-  <ion-toolbar mode="ios">
+  <ion-toolbar>
     <ion-title class="tituloPrincipal">
-      ¡Foro TODAY!
+      ¡Foro DuocUC!
     </ion-title>
   </ion-toolbar>
 
@@ -54,8 +54,8 @@
 
   </ion-card>
 
-  <ion-card class="sin-bordes">
-    <ion-card-title class="con-padding-top">Publicaciones recientes</ion-card-title>
+  <ion-card class="sin-bordes ion-padding-horizontal" >
+    <ion-card-title class="ion-padding-top ion-padding-bottom">Publicaciones recientes</ion-card-title>
   </ion-card>
 
   <ion-card *ngFor="let p of publicaciones; let i=index; trackBy: getIdentificadorItemPublicacion">
