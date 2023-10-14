@@ -17,6 +17,7 @@ import { Storage } from '@ionic/storage-angular';
 import { Capacitor } from '@capacitor/core';
 import { defineCustomElements as jeepSqlite} from 'jeep-sqlite/loader';
 
+
 if (environment.production) {
   enableProdMode();
 }
@@ -41,6 +42,7 @@ bootstrapApplication(AppComponent, {
     // HttpClientModule, 
     // IonicStorageModule.forRoot()
     ),
+
     provideRouter(routes),
     // provideAnimations(),
     InitializeAppService,
