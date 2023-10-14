@@ -55,7 +55,7 @@ export class ForoComponent  implements OnInit {
   constructor(
     private api: APIClientService,
     private toastController: ToastController,private activeroute: ActivatedRoute, private router: Router,) {
-      this.usuario = new Usuario('', '', '', '', '', '');
+      this.usuario = new Usuario;
       this.activeroute.queryParams.subscribe(params => { 
         const nav = this.router.getCurrentNavigation();
   

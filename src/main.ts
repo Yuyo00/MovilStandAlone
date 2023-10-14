@@ -10,12 +10,13 @@ import { InitializeAppService } from './app/services/initialize.app.service';
 import { SQLiteService } from './app/services/sqlite.service';
 import { DataBaseService } from './app/services/data-base.service';
 import { StorageService } from './app/services/storage.service';
-import { DbnameVersionService } from './app/services/dbname-version.service';
+import { DbnameVersionService } from 'src/app/services/dbname-version.service';
 import { APP_INITIALIZER } from '@angular/core';
 import { AuthService } from './app/services/auth.service.service';
 import { Storage } from '@ionic/storage-angular';
 import { Capacitor } from '@capacitor/core';
 import { defineCustomElements as jeepSqlite} from 'jeep-sqlite/loader';
+import { HttpClientModule } from '@angular/common/http';
 
 
 if (environment.production) {
@@ -39,7 +40,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     importProvidersFrom(IonicModule.forRoot({ innerHTMLTemplatesEnabled : true }), 
-    // HttpClientModule, 
+    HttpClientModule, 
     // IonicStorageModule.forRoot()
     ),
 
