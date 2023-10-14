@@ -34,7 +34,7 @@ export class QrComponent  implements OnInit, AfterViewInit {
   public usuario: Usuario;
   public datos = false;
 
-  constructor(private activeroute: ActivatedRoute , private router: Router , private alertController: AlertController , private animationController: AnimationController, private toastController: ToastController) { this.usuario = new Usuario('', '', '', '', '', '');
+  constructor(private activeroute: ActivatedRoute , private router: Router , private alertController: AlertController , private animationController: AnimationController, private toastController: ToastController) { this.usuario = new Usuario();
 
 
   this.activeroute.queryParams.subscribe(params => { 
@@ -170,6 +170,9 @@ export class QrComponent  implements OnInit, AfterViewInit {
   public logOff(): void{
     this.router.navigate(['/login'])
   }
+
+  
+
 
   public animateItem(elementRef: any) {
     this.animationController

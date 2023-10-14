@@ -20,7 +20,7 @@ export class MisdatosComponent  implements OnInit, AfterViewInit{
   @ViewChild('Nombre', { read: ElementRef }) itemNombreTit!: ElementRef;
 
   constructor(private activeroute: ActivatedRoute , private router: Router , private alertController: AlertController , private animationController: AnimationController, private toastController: ToastController) {
-    this.usuario = new Usuario('', '', '', '', '', '');
+    this.usuario = new Usuario();
     
     this.activeroute.queryParams.subscribe(params => { 
       const nav = this.router.getCurrentNavigation();
