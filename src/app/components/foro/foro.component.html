@@ -1,82 +1,78 @@
-<ion-header [translucent]="true">
-
-  <ion-toolbar>
-    <ion-title class="tituloPrincipal">
-      ¡Foro DuocUC!
-    </ion-title>
-  </ion-toolbar>
-
-  <ion-toolbar>
-    <ion-card>
-      <ion-item lines="none">
-        <span>
-          Publicador:&nbsp;
-        </span>
-        <ion-select placeholder="Seleccione su usuario"
-            class="ion-float-right"
-            [(ngModel)]="selectedUserId"
-            (ngModelChange)="cambiarUsuario($event)">
-          <ion-select-option *ngFor="let u of usuarios" [value]="u.id">
-            {{u.name}}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-card>
-  </ion-toolbar>
-
+<ion-header class="ion-text-center ion-padding-top">
+  <ion-title class="tituloPrincipal">
+    ¡Foro DuocUC!
+  </ion-title>
+  <div id="selectDiv">
+    <ion-select placeholder="Seleccione usuario publicador" class="ion-float-right ion-text-center" [(ngModel)]="selectedUserId" (ngModelChange)="cambiarUsuario($event)">
+      <ion-select-option *ngFor="let u of usuarios" [value]="u.id">
+        {{u.name}}
+      </ion-select-option>
+    </ion-select> 
+  </div>
 </ion-header>
 
-<ion-content >
+<ion-content class="bg-image">
   <a id="topOfPage" href="#topOfPage"></a>
   <ion-card>
 
     <ion-card-header>
-      <ion-card-title>Ingresa tu publicación</ion-card-title>
-      
+      <ion-card-title>¡Escribe una publicación!</ion-card-title>
     </ion-card-header>
 
-    <ion-item class="ion-padding-horizontal">
-      <ion-label position="floating" color="Secondary">Título</ion-label>
+    <ion-item style="--background: transparent;" class="ion-padding-horizontal">
+      <ion-label position="floating" color="medium">Tema principal</ion-label>
       <ion-input [(ngModel)]="publicacion.title"></ion-input>
     </ion-item>
 
-    <ion-item class="ion-padding-horizontal">
-      <ion-label position="floating" color="Secondary">Cuerpo</ion-label>
+    <ion-item style="--background: transparent;" class="ion-padding-horizontal">
+      <ion-label position="floating" color="medium">Cuentanos algo!</ion-label>
       <ion-textarea [(ngModel)]="publicacion.body"></ion-textarea>
     </ion-item>
 
     <ion-grid>
-      <ion-row>
-        <ion-col><ion-button shape="round" expand="block" (click)="limpiarPublicacion()">Limpiar</ion-button></ion-col>
-        <ion-col><ion-button shape="round" expand="block" (click)="guardarPublicacion()">Guardar</ion-button></ion-col>
+      <ion-row class="ion-float-right">
+        <ion-col>
+          <ion-button shape="round" (click)="guardarPublicacion()">
+            Enviar
+          </ion-button>
+          <ion-button id="Limpiar" shape="circle" (click)="limpiarPublicacion()" size="small" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+              <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+            </svg>
+          </ion-button>
+        </ion-col>
       </ion-row>
     </ion-grid>
 
   </ion-card>
 
-  <ion-card class="sin-bordes ion-padding-horizontal" >
-    <ion-card-title class="ion-padding-top ion-padding-bottom">Publicaciones recientes</ion-card-title>
-  </ion-card>
+  <ion-card-title class="ion-padding-top ion-padding-bottom ion-padding-horizontal">
+    Ultimas Publicaciones
+  </ion-card-title>
 
   <ion-card *ngFor="let p of publicaciones; let i=index; trackBy: getIdentificadorItemPublicacion">
+    <div style="margin-bottom: 3rem;">
+      <p class="ion-padding-horizontal" style="text-align:left;float:left;"> #{{p.id}} </p>
+      <p class="ion-padding-horizontal" style="text-align:right;float:right;"> {{p.name}} </p>
+    </div>
 
     <ion-card-header>
-      <h6>(Publicación #{{p.id}}) {{p.name}}</h6>
-      <h4>{{p.title}}</h4>
+      <h3 style="display: contents; float: inline-start;">{{p.title}}</h3>
     </ion-card-header>
-  
+
     <ion-card-content>
       {{p.body}}
     </ion-card-content>
 
-    <ion-button (click)="editarPublicacion(p)">
-      <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
-    </ion-button>
-
-    <ion-button (click)="eliminarPublicacion(p)">
-      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-    </ion-button>
-
+    <div class="ion-float-right ion-padding-horizontal ion-padding-bottom" >
+      <ion-button shape="circle" (click)="editarPublicacion(p)">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+  
+      <ion-button shape="circle" color="danger" id="outline" (click)="eliminarPublicacion(p)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </div>
   </ion-card>
 
 </ion-content>
