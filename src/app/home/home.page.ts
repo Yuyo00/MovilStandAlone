@@ -222,9 +222,9 @@ export class HomePage implements OnInit, AfterViewInit {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
     
-      crearUsuariosDePrueba() {
-        const u: Usuario = new Usuario();
-        u.setUsuario(this.generarNumeroAleatorio(1, 999999) + 'a@duocuc.cl', '1234', this.nombre, '', 'Animal favorito', 'gato', 'N');
-        this.bd.crearUsuario(u)
-      }
+      // crearUsuariosDePrueba() {
+      //   const u: Usuario = new Usuario();
+      //   u.setUsuario(this.generarNumeroAleatorio(1, 999999) + 'a@duocuc.cl', '1234', this.nombre, '', 'Animal favorito', 'gato', 'N');
+      //   this.bd.crearUsuario(u)
+      // }
     }

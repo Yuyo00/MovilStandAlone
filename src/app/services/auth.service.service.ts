@@ -28,12 +28,14 @@ export class AuthService {
   async login(correo: string, password: string) {
     await this.storage.get(this.keyUsuario).then(async (usuarioAutenticado) => {
       if (usuarioAutenticado) {
+        
         this.bd.actualizarSesionActiva(correo, 'S');
         this.storage.set(this.keyUsuario, usuarioAutenticado);
         this.usuarioAutenticado.next(usuarioAutenticado);
         this.router.navigate(['home/qr']);
       } else {
         await this.bd.validarUsuario(correo, password).then(async (usuario: Usuario | undefined) => {
+          
           if (usuario) {
             showToast(`¡Bienvenido(a) ${usuario.nombre} ${usuario.apellido}!`);
             this.bd.actualizarSesionActiva(correo, 'S');
@@ -42,7 +44,7 @@ export class AuthService {
             this.router.navigate(['home/qr']);
           } else {
             showToast(`El correo o la password son incorrectos`);
-            this.router.navigate(['ingreso']);
+            this.router.navigate(['login']);
           }
         });
       }
@@ -50,18 +52,21 @@ export class AuthService {
   }
 
   async logout() {
-    this.leerUsuarioAutenticado().then((usuario) => {
+    try {
+      const usuario = await this.leerUsuarioAutenticado();
+  
       if (usuario) {
+        await this.storage.remove(this.keyUsuario);
+        this.usuarioAutenticado.next(null);
         showToast(`¡Hasta pronto ${usuario.nombre} ${usuario.apellido}!`);
         this.bd.actualizarSesionActiva(usuario.correo, 'N');
-        this.storage.remove(this.keyUsuario);
-        this.usuarioAutenticado.next(null);
-        this.router.navigate(['login']);
-      } else {
-        this.router.navigate(['login']);
       }
-    })
-
+  
+      this.router.navigate(['login']);
+    } catch (error) {
+      console.error('Error durante el logout:', error);
+      this.router.navigate(['login']);
+    }
   }
 
   async leerUsuarioAutenticado(): Promise<Usuario | undefined> {
