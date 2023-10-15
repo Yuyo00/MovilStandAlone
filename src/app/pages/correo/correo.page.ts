@@ -42,7 +42,7 @@ export class CorreoPage implements OnInit {
   }
 
   public async SiguientePaso() {
-    var respuesta : Usuario = await this.bd.leerUsuario(this.usuario.correo);
+    var respuesta  = await this.bd.leerUsuario(this.usuario.correo);
 
     if (respuesta) {
       const navigationExtras: NavigationExtras = {

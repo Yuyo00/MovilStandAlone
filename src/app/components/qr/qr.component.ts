@@ -38,7 +38,6 @@ export class QrComponent  implements OnInit, AfterViewInit {
 
   constructor(private activeroute: ActivatedRoute , private storage : StorageService, private router: Router , private authService : AuthService, private animationController: AnimationController, private toastController: ToastController) { 
   this.usuario = new Usuario();
-
   this.activeroute.queryParams.subscribe(params => { 
   
     const nav = this.router.getCurrentNavigation();
@@ -206,6 +205,9 @@ export class QrComponent  implements OnInit, AfterViewInit {
     else{
       this.mostrarMensaje(`No se encontro una clase`);
     }
+  }
+  async ionViewWillEnter() {
+    await this.DatosStorage();
   }
 }
 
