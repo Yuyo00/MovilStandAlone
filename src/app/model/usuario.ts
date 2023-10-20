@@ -37,7 +37,13 @@ export class Usuario {
           this.respuestaSecreta = respuestaSecreta;
         }
     
-
+        static getUsuario(correo: string, password: string, nombre: string, apellido: string, preguntaSecreta: string,
+          respuestaSecreta: string, sesionActiva: string)
+        {
+          const usu = new Usuario();
+          usu.setUsuario(correo, password, nombre, apellido, preguntaSecreta, respuestaSecreta, sesionActiva)
+          return usu;
+        }
     getDatosUsuario() {
       return [this.correo, this.password, this.nombre, this.apellido, this.preguntaSecreta,
         this.respuestaSecreta, this.sesionActiva];

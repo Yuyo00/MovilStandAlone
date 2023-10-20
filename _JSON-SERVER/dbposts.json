@@ -57,28 +57,9 @@
     {
       "userId": 6,
       "id": 11,
-      "title": "Oportunidades de Estudio en el Instituto Duoc",
-      "body": "El Instituto Duoc ofrece una amplia gama de oportunidades de estudio en diversas disciplinas. Encuentra el programa que se adapte a tus intereses y metas."
-    },
-    {
-      "userId": 6,
-      "id": 12,
-      "title": "Instituto Duoc: Compromiso con la Comunidad CHILENA",
-      "body": "El Instituto DUOC está comprometido con la comunidad y realiza actividades de servicio social para contribuir al bienestar de la sociedad.",
+      "title": ":3",
+      "body": "El Instituto Duoc ofrece una amplia gama de oportunidades de estudio en diversas disciplinas. Encuentra el programa que se adapte a tus intereses y metas.",
       "name": "Mrs. Dennis Schulist"
-    },
-    {
-      "userId": 7,
-      "id": 13,
-      "title": "Aprendizaje en Línea en el Instituto Duoc",
-      "body": "El Instituto Duoc ofrece opciones de aprendizaje en línea para aquellos que desean flexibilidad en sus estudios. Aprovecha la tecnología para tu formación académica."
-    },
-    {
-      "userId": 2,
-      "id": 14,
-      "title": "Evin titulo",
-      "body": "Evin cuerpo",
-      "name": ""
     }
   ],
   "users": [

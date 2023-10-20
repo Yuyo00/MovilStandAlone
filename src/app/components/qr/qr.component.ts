@@ -90,17 +90,15 @@ export class QrComponent  implements OnInit, AfterViewInit {
     }
   }
 
-  async DatosStorage() {
-    const Datos = await this.storage.leerUsuarioAutenticadoSinPrivacidad()
-    if (Datos) {
-      this.usuario.setUsuario(Datos.correo, Datos.password, Datos.nombre, Datos.apellido, Datos.preguntaSecreta, Datos.respuestaSecreta, Datos.sesionActiva)
-    } else {
-      console.log('Error :(')
-    }
-  }
+  
 
-  public ngOnInit(): void {
-    this.DatosStorage();
+  async ngOnInit() {
+    this.authService.usuarioAutenticado.subscribe((usuario) => {
+      if (usuario !== null) {
+        this.usuario = usuario!;
+      }
+    })
+    
   }
 
   public async comenzarEscaneoQR() {
@@ -206,8 +204,6 @@ export class QrComponent  implements OnInit, AfterViewInit {
       this.mostrarMensaje(`No se encontro una clase`);
     }
   }
-  async ionViewWillEnter() {
-    await this.DatosStorage();
-  }
+  
 }
 
